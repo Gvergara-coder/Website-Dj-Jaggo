@@ -39,6 +39,17 @@ export default function Home() {
     { name: 'Pioneer DJM-900NXS2', type: 'Mixer' },
   ]
 
+  const mediaGalleryImages = [
+    '/MEDIA-GALLERY-1.jpg',
+    '/MEDIA-GALLERY-2.jpg',
+    '/MEDIA-GALLERY-3.jpg',
+    '/MEDIA-GALLERY-4.jpg',
+    '/MEDIA-GALLERY-5.jpg',
+    '/MEDIA-GALLERY-6.jpeg',
+    '/MEDIA-GALLERY-7.jpeg',
+    '/MEDIA-GALLERY-8.jpeg',
+  ]
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: 'smooth' })
@@ -54,9 +65,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-3xl font-bold tracking-tighter hover:text-red-600 transition-colors"
+            className="flex items-center justify-center hover:text-red-600 transition-colors min-h-[3rem]"
+            aria-label="Ir al inicio"
           >
-            JAGGO
+            <img
+              src="/LOGO-JAGGO.png"
+              alt="Logo JAGGO"
+              width={180}
+              height={48}
+              className="h-12 w-auto object-contain"
+            />
           </button>
 
           {/* Desktop Menu */}
@@ -114,7 +132,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/hero-bg.jpg"
+            src="/PORTADA.jpg"
             alt="JAGGO - DJ"
             fill
             className="object-cover"
@@ -126,8 +144,14 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 text-center px-6 space-y-6">
-          <h1 className="text-7xl md:text-8xl font-black tracking-tighter text-white drop-shadow-2xl animate-fade-in">
-            JAGGO
+          <h1 className="text-white drop-shadow-2xl animate-fade-in">
+            <Image
+              src="/LOGO-JAGGO.png"
+              alt="Logo JAGGO"
+              width={280}
+              height={80}
+              className="mx-auto h-auto w-auto max-w-[18rem] object-contain"
+            />
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 uppercase tracking-widest font-light">
             DJ | House · Latin House · Tech House · Reggaetón
@@ -156,10 +180,10 @@ export default function Home() {
             {/* Image */}
             <div className="relative h-96 md:h-[500px] overflow-hidden">
               <Image
-                src="/about-image.jpg"
+                src="/ABOUT-JAGGO.jpg"
                 alt="JAGGO DJ"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
 
@@ -229,13 +253,13 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="group relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-red-900/10 to-transparent border border-red-900/30 hover:border-red-600/60 transition-all duration-300">
+            {mediaGalleryImages.map((src, idx) => (
+              <div key={src} className="group relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-red-900/10 to-transparent border border-red-900/30 hover:border-red-600/60 transition-all duration-300">
                 <Image
-                  src={`/media-${item}.jpg`}
-                  alt={`JAGGO Performance ${item}`}
+                  src={src}
+                  alt={`JAGGO Performance ${idx + 1}`}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                   <Play size={48} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
