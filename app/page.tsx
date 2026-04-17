@@ -41,10 +41,10 @@ export default function Home() {
 
   const mediaGalleryImages = [
     '/MEDIA-GALLERY-1.jpg',
-    '/MEDIA-GALLERY-2.jpg',
+    '/MEDIA-GALLERY-5.jpg',
     '/MEDIA-GALLERY-3.jpg',
     '/MEDIA-GALLERY-4.jpg',
-    '/MEDIA-GALLERY-5.jpg',
+    '/MEDIA-GALLERY-2.jpg',
     '/MEDIA-GALLERY-6.jpeg',
     '/MEDIA-GALLERY-7.jpeg',
     '/MEDIA-GALLERY-8.jpeg',
@@ -91,7 +91,7 @@ export default function Home() {
             <button onClick={() => scrollToSection('rider')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
               Rider
             </button>
-            <button onClick={() => scrollToSection('contact')} className="px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors">
+            <button onClick={() => window.location.href = "mailto:jaggo.contact@gmail.com?subject=Booking Inquiry"} className="px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors">
               Book Now
             </button>
           </div>
@@ -120,7 +120,7 @@ export default function Home() {
             <button onClick={() => scrollToSection('rider')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
               Rider
             </button>
-            <button onClick={() => scrollToSection('contact')} className="w-full px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors mt-4">
+            <button onClick={() => window.location.href = "mailto:jaggo.contact@gmail.com?subject=Booking Inquiry"} className="w-full px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors mt-4">
               Book Now
             </button>
           </div>
@@ -157,7 +157,7 @@ export default function Home() {
             DJ | House · Latin House · Tech House · Reggaetón
           </p>
           <button
-            onClick={() => scrollToSection('contact')}
+            onClick={() => window.location.href = "mailto:jaggo.contact@gmail.com?subject=Booking Inquiry"}
             className="inline-flex items-center gap-3 px-8 py-4 bg-red-900/80 hover:bg-red-800 text-white font-semibold uppercase tracking-wider transition-all hover:shadow-2xl hover:shadow-red-900/50"
           >
             <span>Book Now</span>
@@ -254,12 +254,12 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mediaGalleryImages.map((src, idx) => (
-              <div key={src} className="group relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-red-900/10 to-transparent border border-red-900/30 hover:border-red-600/60 transition-all duration-300">
+              <div key={src} className="group relative h-64 md:h-100 overflow-hidden bg-gradient-to-br from-red-900/10 to-transparent border border-red-900/30 hover:border-red-600/60 transition-all duration-300">
                 <Image
                   src={src}
                   alt={`JAGGO Performance ${idx + 1}`}
                   fill
-                  className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover object-center group-hover:scale-100 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                   <Play size={48} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
