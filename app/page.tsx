@@ -183,7 +183,7 @@ export default function Home() {
                 src="/ABOUT-JAGGO.jpg"
                 alt="JAGGO DJ"
                 fill
-                className="object-cover object-center"
+                className="object-contain object-center"
               />
             </div>
 
@@ -201,15 +201,15 @@ export default function Home() {
               <div className="pt-6 space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 uppercase tracking-wider text-sm">Years Active</span>
-                  <span className="text-2xl font-bold text-red-600">10+</span>
+                  <span className="text-2xl font-bold text-red-600">+10</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 uppercase tracking-wider text-sm">Shows Performed</span>
-                  <span className="text-2xl font-bold text-red-600">500+</span>
+                  <span className="text-2xl font-bold text-red-600">+100</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 uppercase tracking-wider text-sm">Average Crowd</span>
-                  <span className="text-2xl font-bold text-red-600">2000+</span>
+                  <span className="text-2xl font-bold text-red-600">+2000</span>
                 </div>
               </div>
             </div>
@@ -300,10 +300,6 @@ export default function Home() {
                 </ul>
               </div>
 
-              <button className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-red-900/80 hover:bg-red-800 text-white font-semibold uppercase tracking-wider transition-all">
-                <Download size={20} />
-                Download Full Rider PDF
-              </button>
             </div>
 
             {/* Rider Image */}
