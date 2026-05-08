@@ -59,9 +59,8 @@ export default function Home() {
   return (
     <div className="w-full bg-black text-white overflow-hidden">
       {/* NAVIGATION */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/95 backdrop-blur-md border-b border-red-900/30' : 'bg-transparent'
-      }`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/95 backdrop-blur-md border-b border-red-900/30' : 'bg-transparent'
+        }`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <button
             onClick={() => scrollToSection('hero')}
@@ -88,10 +87,16 @@ export default function Home() {
             <button onClick={() => scrollToSection('media')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
               Media
             </button>
+            <button onClick={() => scrollToSection('video')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
+              Video
+            </button>
             <button onClick={() => scrollToSection('rider')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
               Rider
             </button>
-            <button onClick={() => window.location.href = "mailto:jaggo.contact@gmail.com?subject=Booking Inquiry"} className="px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors">
+            <button
+              onClick={() => window.open("https://wa.me/4141625709?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20un%20Booking", "_blank")}
+              className="px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors"
+            >
               Book Now
             </button>
           </div>
@@ -117,6 +122,9 @@ export default function Home() {
             <button onClick={() => scrollToSection('media')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
               Media
             </button>
+            <button onClick={() => scrollToSection('video')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
+              Video
+            </button>
             <button onClick={() => scrollToSection('rider')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
               Rider
             </button>
@@ -135,7 +143,7 @@ export default function Home() {
             src="/PORTADA.jpg"
             alt="JAGGO - DJ"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
           {/* Dark Overlay */}
@@ -270,6 +278,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* VIDEO SECTION */}
+      <section id="video" className="py-20 md:py-32 px-6 bg-gradient-to-b from-black to-red-950/20">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16">
+            Featured Video
+          </h2>
+          <div className="flex justify-center">
+            <div
+              className="relative w-full max-w-4xl aspect-video bg-gray-800 rounded-lg overflow-hidden cursor-pointer group"
+              onClick={() => window.open('https://www.youtube.com/watch?v=E6vYdKGUzX8', '_blank')}
+            >
+              {/* IMAGEN DE PORTADA (THUMBNAIL) */}
+              <img
+                src="https://img.youtube.com/vi/E6vYdKGUzX8/maxresdefault.jpg"
+                alt="Video Thumbnail"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+
+              {/* OVERLAY Y BOTÓN DE PLAY */}
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors group-hover:bg-black/20">
+                <Play
+                  size={64}
+                  className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-transform group-hover:scale-110"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* RIDER SECTION */}
       <section id="rider" className="py-20 md:py-32 px-6 bg-gradient-to-b from-black to-red-950/20">
         <div className="max-w-7xl mx-auto">
@@ -360,10 +398,15 @@ export default function Home() {
           </div>
 
           {/* CTA Button */}
-          <button className="inline-flex items-center gap-3 px-10 py-4 bg-red-900/80 hover:bg-red-800 text-white font-bold uppercase tracking-widest transition-all hover:shadow-2xl hover:shadow-red-900/50">
+          <a
+            href="https://wa.me/4141625709?text=Hola%20JAGGO,%20me%20gustaría%20solicitar%20información%20sobre%20el%20Booking"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-red-900/80 hover:bg-red-800 text-white font-bold uppercase tracking-widest transition-all hover:shadow-2xl hover:shadow-red-900/50"
+          >
             <span>Booking Inquiry</span>
             <ExternalLink size={20} />
-          </button>
+          </a>
         </div>
       </section>
 
