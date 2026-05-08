@@ -22,8 +22,8 @@ export default function Home() {
     { name: 'LeClub Caracas', category: 'Club' },
     { name: 'Cervezadas Polar', category: 'Festival' },
     { name: 'Quinta Esmeralda', category: 'Venue' },
-    { name: 'Caracas Country Club', category: 'Club' },
-    { name: 'Hotel Intercontinental', category: 'Luxury' },
+    { name: 'Caracas Country Club', category: 'Social Event' },
+    { name: 'Hotel Intercontinental', category: 'Social Event' },
     { name: 'Microteatro Venezuela', category: 'Theater' },
   ]
 
@@ -144,14 +144,13 @@ export default function Home() {
             alt="JAGGO - DJ"
             fill
             className="object-cover object-center"
-            priority
           />
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 text-center px-6 space-y-6">
+        <div className="relative z-10 text-center px-6 space-y-2">
           <h1 className="text-white drop-shadow-2xl animate-fade-in">
             <Image
               src="/LOGO-JAGGO.png"
@@ -282,7 +281,7 @@ export default function Home() {
       <section id="video" className="py-20 md:py-32 px-6 bg-gradient-to-b from-black to-red-950/20">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16">
-            Featured Video
+            Latest session
           </h2>
           <div className="flex justify-center">
             <div
@@ -346,7 +345,7 @@ export default function Home() {
                 src="/rider-setup.jpg"
                 alt="Equipment Setup"
                 fill
-                className="object-cover"
+                className="object-contain object-center transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
