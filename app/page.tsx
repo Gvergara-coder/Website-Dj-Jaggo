@@ -2,12 +2,30 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Menu, X, Play, Download, Mail, ExternalLink } from 'lucide-react'
-import Link from 'next/link'
+import { Menu, X, Play, Mail, ExternalLink, ChevronDown, Check } from 'lucide-react'
+import { translations, languages, type LanguageCode } from '@/lib/translations'
+
+type CategoryKey = keyof (typeof translations)['es']['experience']['categories']
+type EquipKey = keyof (typeof translations)['es']['rider']['equipmentTypes']
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isLangOpen, setIsLangOpen] = useState(false)
+  const [lang, setLang] = useState<LanguageCode>('en')
+
+  // Cargar idioma guardado al iniciar
+  useEffect(() => {
+    const saved = localStorage.getItem('jaggo-lang') as LanguageCode | null
+    if (saved && languages.some((l) => l.code === saved)) {
+      setLang(saved)
+    }
+  }, [])
+
+  // Mantener el atributo lang del <html> sincronizado
+  useEffect(() => {
+    document.documentElement.lang = lang
+  }, [lang])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,14 +35,24 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const venues = [
-    { name: 'Estadio Monumental Simón Bolívar', category: 'Arena' },
-    { name: 'LeClub Caracas', category: 'Club' },
-    { name: 'Cervezadas Polar', category: 'Festival' },
-    { name: 'Quinta Esmeralda', category: 'Venue' },
-    { name: 'Caracas Country Club', category: 'Social Event' },
-    { name: 'Hotel Intercontinental', category: 'Social Event' },
-    { name: 'Microteatro Venezuela', category: 'Theater' },
+  const t = translations[lang]
+  const currentLang = languages.find((l) => l.code === lang)!
+
+  const changeLanguage = (code: LanguageCode) => {
+    setLang(code)
+    localStorage.setItem('jaggo-lang', code)
+    setIsLangOpen(false)
+    setIsMenuOpen(false)
+  }
+
+  const venues: { name: string; category: CategoryKey }[] = [
+    { name: 'Estadio Monumental Simón Bolívar', category: 'arena' },
+    { name: 'LeClub Caracas', category: 'club' },
+    { name: 'Cervezadas Polar', category: 'festival' },
+    { name: 'Quinta Esmeralda', category: 'venue' },
+    { name: 'Caracas Country Club', category: 'social' },
+    { name: 'Hotel Intercontinental', category: 'social' },
+    { name: 'Microteatro Venezuela', category: 'theater' },
   ]
 
   const socials = [
@@ -34,9 +62,9 @@ export default function Home() {
     { name: 'SoundCloud', url: 'https://soundcloud.com/jaggomusic', icon: 'soundcloud' },
   ]
 
-  const equipment = [
-    { name: '2x Pioneer CDJ-3000', type: 'Turntable' },
-    { name: 'Pioneer DJM-900NXS2', type: 'Mixer' },
+  const equipment: { name: string; type: EquipKey }[] = [
+    { name: '2x Pioneer CDJ-3000', type: 'turntable' },
+    { name: 'Pioneer DJM-900NXS2', type: 'mixer' },
   ]
 
   const mediaGalleryImages = [
@@ -79,25 +107,64 @@ export default function Home() {
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 items-center">
             <button onClick={() => scrollToSection('about')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
-              About
+              {t.nav.about}
             </button>
             <button onClick={() => scrollToSection('experience')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
-              Experience
+              {t.nav.experience}
             </button>
             <button onClick={() => scrollToSection('media')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
-              Media
+              {t.nav.media}
             </button>
             <button onClick={() => scrollToSection('video')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
-              Video
+              {t.nav.video}
             </button>
             <button onClick={() => scrollToSection('rider')} className="text-sm uppercase tracking-wider hover:text-red-600 transition-colors">
-              Rider
+              {t.nav.rider}
             </button>
+
+            {/* Language Selector (desktop) */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="flex items-center gap-2 px-2 py-1.5 text-sm uppercase tracking-wider text-gray-200 hover:text-red-600 transition-colors"
+                aria-label="Select language"
+                aria-expanded={isLangOpen}
+              >
+                <img src={currentLang.flag} alt="" className="w-5 h-3.5 object-cover rounded-sm ring-1 ring-white/15" />
+                <span>{currentLang.code}</span>
+                <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isLangOpen && (
+                <>
+                  {/* Capa para cerrar al hacer click fuera */}
+                  <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
+                  <div className="absolute right-0 mt-3 w-52 z-50 p-1.5 bg-neutral-950/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl shadow-black/60 animate-fade-in">
+                    {languages.map((l) => {
+                      const active = l.code === lang
+                      return (
+                        <button
+                          key={l.code}
+                          onClick={() => changeLanguage(l.code)}
+                          className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm text-left transition-colors ${active ? 'bg-red-600/15 text-red-400' : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                            }`}
+                        >
+                          <img src={l.flag} alt="" className="w-6 h-4 object-cover rounded-sm ring-1 ring-white/15 shrink-0" />
+                          <span className="tracking-wide">{l.name}</span>
+                          {active && <Check size={15} className="ml-auto text-red-400" />}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </>
+              )}
+            </div>
+
             <button
               onClick={() => window.open("https://wa.me/4141625709?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20un%20Booking", "_blank")}
               className="px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors"
             >
-              Book Now
+              {t.nav.bookNow}
             </button>
           </div>
 
@@ -114,23 +181,41 @@ export default function Home() {
         {isMenuOpen && (
           <div className="md:hidden bg-black/95 border-t border-red-900/30 p-6 space-y-4">
             <button onClick={() => scrollToSection('about')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
-              About
+              {t.nav.about}
             </button>
             <button onClick={() => scrollToSection('experience')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
-              Experience
+              {t.nav.experience}
             </button>
             <button onClick={() => scrollToSection('media')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
-              Media
+              {t.nav.media}
             </button>
             <button onClick={() => scrollToSection('video')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
-              Video
+              {t.nav.video}
             </button>
             <button onClick={() => scrollToSection('rider')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
-              Rider
+              {t.nav.rider}
             </button>
             <button onClick={() => window.open("https://wa.me/4141625709?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20un%20Booking", "_blank")} className="w-full px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors mt-4">
-              Book Now
+              {t.nav.bookNow}
             </button>
+
+            {/* Language Selector (mobile) */}
+            <div className="pt-4 mt-2 border-t border-red-900/30">
+              <div className="grid grid-cols-5 gap-2">
+                {languages.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => changeLanguage(l.code)}
+                    className={`flex flex-col items-center gap-1 py-2 rounded transition-colors ${l.code === lang ? 'bg-red-900/30 text-red-500' : 'text-gray-400 hover:bg-red-900/10'
+                      }`}
+                    aria-label={l.name}
+                  >
+                    <img src={l.flag} alt="" className="w-7 h-5 object-cover rounded-sm ring-1 ring-white/15" />
+                    <span className="text-[10px] uppercase tracking-wider">{l.code}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </nav>
@@ -161,13 +246,13 @@ export default function Home() {
             />
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 uppercase tracking-widest font-light">
-            DJ | House · Latin House · Tech House · Reggaetón
+            {t.hero.subtitle}
           </p>
           <button
             onClick={() => window.open("https://wa.me/4141625709?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20el%20Booking", "_blank")}
             className="inline-flex items-center gap-3 px-8 py-4 bg-red-900/80 hover:bg-red-800 text-white font-semibold uppercase tracking-wider transition-all hover:shadow-2xl hover:shadow-red-900/50"
           >
-            <span>Book Now</span>
+            <span>{t.hero.bookNow}</span>
             <ExternalLink size={20} />
           </button>
         </div>
@@ -197,25 +282,25 @@ export default function Home() {
             {/* Bio */}
             <div className="space-y-8">
               <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-                About <span className="text-red-600">JAGGO</span>
+                {t.about.title} <span className="text-red-600">JAGGO</span>
               </h2>
               <p className="text-lg text-gray-400 leading-relaxed">
-                With roots deeply embedded in the Latin House and Tech House scenes, JAGGO has become a commanding presence in Venezuela&apos;s electronic music landscape. His sets are characterized by a sophisticated blend of House, Latin House, Tech House, and Reggaetón—a combination that has captivated audiences from intimate clubs to massive stadium events.
+                {t.about.bio1}
               </p>
               <p className="text-lg text-gray-400 leading-relaxed">
-                Known for his technical prowess and impeccable musical taste, JAGGO crafts immersive sonic journeys that transcend genre boundaries. His performances at prestigious venues across Caracas have established him as an essential figure in the region&apos;s club culture.
+                {t.about.bio2}
               </p>
               <div className="pt-6 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400 uppercase tracking-wider text-sm">Years Active</span>
+                  <span className="text-gray-400 uppercase tracking-wider text-sm">{t.about.yearsActive}</span>
                   <span className="text-2xl font-bold text-red-600">+10</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400 uppercase tracking-wider text-sm">Shows Performed</span>
+                  <span className="text-gray-400 uppercase tracking-wider text-sm">{t.about.showsPerformed}</span>
                   <span className="text-2xl font-bold text-red-600">+100</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400 uppercase tracking-wider text-sm">Average Crowd</span>
+                  <span className="text-gray-400 uppercase tracking-wider text-sm">{t.about.averageCrowd}</span>
                   <span className="text-2xl font-bold text-red-600">+2000</span>
                 </div>
               </div>
@@ -228,7 +313,7 @@ export default function Home() {
       <section id="experience" className="py-20 md:py-32 px-6 bg-gradient-to-b from-black to-red-950/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16">
-            Performed At
+            {t.experience.title}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -243,7 +328,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">{venue.name}</h3>
-                    <p className="text-sm text-gray-500 uppercase tracking-wider">{venue.category}</p>
+                    <p className="text-sm text-gray-500 uppercase tracking-wider">{t.experience.categories[venue.category]}</p>
                   </div>
                 </div>
               </div>
@@ -256,7 +341,7 @@ export default function Home() {
       <section id="media" className="py-20 md:py-32 px-6 bg-black">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16">
-            Media Gallery
+            {t.mediaSection.title}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -281,7 +366,7 @@ export default function Home() {
       <section id="video" className="py-20 md:py-32 px-6 bg-gradient-to-b from-black to-red-950/20">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16">
-            Latest session
+            {t.videoSection.title}
           </h2>
           <div className="flex justify-center">
             <div
@@ -311,29 +396,28 @@ export default function Home() {
       <section id="rider" className="py-20 md:py-32 px-6 bg-gradient-to-b from-black to-red-950/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16">
-            Technical Rider
+            {t.rider.title}
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Equipment */}
             <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Required Equipment</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">{t.rider.requiredEquipment}</h3>
               <div className="space-y-4">
                 {equipment.map((item, idx) => (
                   <div key={idx} className="p-6 bg-gradient-to-r from-red-900/20 to-transparent border border-red-900/30 rounded-sm hover:border-red-600/60 transition-colors">
                     <p className="font-semibold text-white text-lg">{item.name}</p>
-                    <p className="text-sm text-gray-500 uppercase tracking-wider">{item.type}</p>
+                    <p className="text-sm text-gray-500 uppercase tracking-wider">{t.rider.equipmentTypes[item.type]}</p>
                   </div>
                 ))}
               </div>
 
               <div className="p-6 bg-gradient-to-r from-red-900/20 to-transparent border border-red-900/30 rounded-sm">
-                <h4 className="font-semibold text-white mb-3">Setup Details</h4>
+                <h4 className="font-semibold text-white mb-3">{t.rider.setupDetails}</h4>
                 <ul className="text-gray-400 text-sm space-y-2">
-                  <li>• Dual turntable setup with professional mixer</li>
-                  <li>• High-quality monitor system required</li>
-                  <li>• Isolated power supply preferred</li>
-                  <li>• Professional lighting support</li>
+                  {t.rider.setupItems.map((item, idx) => (
+                    <li key={idx}>• {item}</li>
+                  ))}
                 </ul>
               </div>
 
@@ -357,10 +441,10 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center space-y-12">
           <div>
             <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
-              Get in Touch
+              {t.contact.title}
             </h2>
             <p className="text-lg text-gray-400">
-              Available for bookings, collaborations, and inquiries
+              {t.contact.subtitle}
             </p>
           </div>
 
@@ -368,7 +452,7 @@ export default function Home() {
             {/* Email */}
             <div className="p-8 bg-gradient-to-br from-red-900/20 to-transparent border border-red-900/30 hover:border-red-600/60 transition-all">
               <Mail size={32} className="text-red-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Email</h3>
+              <h3 className="text-xl font-bold text-white mb-2">{t.contact.email}</h3>
               <a
                 href="mailto:jaggo.contact@gmail.com"
                 className="text-gray-400 hover:text-red-600 transition-colors"
@@ -379,7 +463,7 @@ export default function Home() {
 
             {/* Social Links */}
             <div className="p-8 bg-gradient-to-br from-red-900/20 to-transparent border border-red-900/30 hover:border-red-600/60 transition-all">
-              <h3 className="text-xl font-bold text-white mb-6">Follow</h3>
+              <h3 className="text-xl font-bold text-white mb-6">{t.contact.follow}</h3>
               <div className="flex items-center justify-center gap-6">
                 {socials.map((social) => (
                   <a
@@ -403,7 +487,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-4 bg-red-900/80 hover:bg-red-800 text-white font-bold uppercase tracking-widest transition-all hover:shadow-2xl hover:shadow-red-900/50"
           >
-            <span>Booking Inquiry</span>
+            <span>{t.contact.bookingInquiry}</span>
             <ExternalLink size={20} />
           </a>
         </div>
@@ -412,7 +496,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="bg-black border-t border-red-900/30 py-8 px-6">
         <div className="max-w-7xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2024 JAGGO. All rights reserved. | Premium DJ Press Kit</p>
+          <p>{t.footer.rights}</p>
         </div>
       </footer>
     </div>
