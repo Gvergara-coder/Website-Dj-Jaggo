@@ -12,17 +12,17 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'JAGGO - Professional DJ | House, Latin House, Tech House',
-  description: 'JAGGO - Premium DJ specializing in House, Latin House, Tech House, and Reggaetón. Available for bookings at exclusive venues across Caracas. Professional DJ press kit and technical rider.',
+  description: 'JAGGO - DJ specializing in House, Latin House, Tech House, and Reggaetón. Available for bookings at exclusive venues across Caracas. Professional DJ press kit and technical rider.',
   generator: 'v0.app',
   openGraph: {
     title: 'JAGGO - Professional DJ',
-    description: 'Premium DJ press kit. House, Latin House, Tech House, Reggaetón.',
+    description: 'Jaggo DJ - Official Presskit',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'JAGGO - Professional DJ',
-    description: 'Premium DJ press kit',
+    description: 'Jaggo DJ - Official Presskit',
   },
   icons: {
     icon: [
