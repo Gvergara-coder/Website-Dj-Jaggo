@@ -161,7 +161,7 @@ export default function Home() {
             </div>
 
             <button
-              onClick={() => window.open("https://wa.me/4141625709?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20un%20Booking", "_blank")}
+              onClick={() => window.open("https://wa.me/4244070192?text=Hola,%20me%20gustaría%20obtener%20información%20para%20reservar%20una%20fecha%20con%20Jaggo", "_blank")}
               className="px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors"
             >
               {t.nav.bookNow}
@@ -195,7 +195,7 @@ export default function Home() {
             <button onClick={() => scrollToSection('rider')} className="block w-full text-left text-sm uppercase tracking-wider hover:text-red-600 transition-colors py-2">
               {t.nav.rider}
             </button>
-            <button onClick={() => window.open("https://wa.me/4141625709?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20un%20Booking", "_blank")} className="w-full px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors mt-4">
+            <button onClick={() => window.open("https://wa.me/4244070192?text=Hola,%20me%20gustaría%20obtener%20información%20para%20reservar%20una%20fecha%20con%20Jaggo", "_blank")} className="w-full px-6 py-2 bg-red-900/80 hover:bg-red-800 text-white transition-colors mt-4">
               {t.nav.bookNow}
             </button>
 
@@ -249,7 +249,7 @@ export default function Home() {
             {t.hero.subtitle}
           </p>
           <button
-            onClick={() => window.open("https://wa.me/4141625709?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20el%20Booking", "_blank")}
+            onClick={() => window.open("https://wa.me/4244070192?text=Hola,%20me%20gustaría%20obtener%20información%20para%20reservar%20una%20fecha%20con%20Jaggo", "_blank")}
             className="inline-flex items-center gap-3 px-8 py-4 bg-red-900/80 hover:bg-red-800 text-white font-semibold uppercase tracking-wider transition-all hover:shadow-2xl hover:shadow-red-900/50"
           >
             <span>{t.hero.bookNow}</span>
@@ -482,7 +482,7 @@ export default function Home() {
 
           {/* CTA Button */}
           <a
-            href="https://wa.me/4141625709?text=Hola%20JAGGO,%20me%20gustaría%20solicitar%20información%20sobre%20el%20Booking"
+            href="https://wa.me/4244070192?text=Hola,%20me%20gustaría%20obtener%20información%20para%20reservar%20una%20fecha%20con%20Jaggo"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-4 bg-red-900/80 hover:bg-red-800 text-white font-bold uppercase tracking-widest transition-all hover:shadow-2xl hover:shadow-red-900/50"

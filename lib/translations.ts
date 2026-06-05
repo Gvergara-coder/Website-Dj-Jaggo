@@ -83,8 +83,8 @@ export const translations = {
     },
     about: {
       title: 'About',
-      bio1: "With roots deeply embedded in the Latin House and Tech House scenes, JAGGO has become a commanding presence in Venezuela's electronic music landscape. His sets are characterized by a sophisticated blend of House, Latin House, Tech House, and Reggaetón—a combination that has captivated audiences from intimate clubs to massive stadium events.",
-      bio2: "Known for his technical prowess and impeccable musical taste, JAGGO crafts immersive sonic journeys that transcend genre boundaries. His performances at prestigious venues across Caracas have established him as an essential figure in the region's club culture.",
+      bio1: "Jaggo is a Venezuelan DJ known for his energy, versatility, and ability to connect with the crowd. His passion began in his teenage years, fueled by the rise of electro house, reggaeton, and Venezuelan hip hop. He trained at Pitch Control under the mentorship of Milton Hernández and took his first professional steps with Leonel Rojas at LeClub, one of Caracas' most iconic nightclubs.",
+      bio2: "Since then, he has performed at high-profile social events. His style blends house, afro house, tech house, and reggaeton, shaped by the influence of Latin classics, rock, and the sounds that marked his early years. Jaggo doesn't just mix music—he creates high-energy, emotionally charged experiences where the dance floor lights up and the crowd is fully immersed. Every set is an invitation to let go, feel the beat, and live the moment to the fullest.",
       yearsActive: 'Years Active',
       showsPerformed: 'Shows Performed',
       averageCrowd: 'Average Crowd',
@@ -138,8 +138,8 @@ export const translations = {
     },
     about: {
       title: 'Sobre',
-      bio1: 'Com raízes profundamente enraizadas nas cenas do Latin House e do Tech House, JAGGO tornou-se uma presença dominante no cenário da música eletrônica da Venezuela. Seus sets são caracterizados por uma sofisticada mistura de House, Latin House, Tech House e Reggaetón—uma combinação que cativou o público desde clubes íntimos até eventos massivos em estádios.',
-      bio2: 'Reconhecido por sua destreza técnica e seu gosto musical impecável, JAGGO cria jornadas sonoras imersivas que transcendem as fronteiras dos gêneros. Suas apresentações em locais prestigiados de Caracas o consolidaram como uma figura essencial na cultura de clube da região.',
+      bio1: 'Jaggo é um DJ venezuelano cujo estilo se baseia em energia, versatilidade e conexão com o público. Sua paixão começou na adolescência, influenciado pelo boom do electro house, reggaeton e hip hop venezuelano. Ele treinou na Pitch Control sob a direção de Milton Hernández e deu seus primeiros passos profissionais com Leonel Rojas no LeClub, uma das casas noturnas mais icônicas de Caracas.',
+      bio2: 'Desde então, ele tem se apresentado em eventos sociais de grande prestígio. Seu estilo mescla house, afro house, tech house e reggaeton, com forte influência dos clássicos latinos e da música eletrônica que marcaram sua infância. Jaggo não apenas mixa música: ele cria experiências energéticas e emocionantes, onde a pista de dança incendeia e a multidão vibra. Cada um de seus sets é um convite para viver a vida ao máximo.',
       yearsActive: 'Anos de Carreira',
       showsPerformed: 'Shows Realizados',
       averageCrowd: 'Público Médio',
@@ -193,8 +193,8 @@ export const translations = {
     },
     about: {
       title: 'À propos de',
-      bio1: "Avec des racines profondément ancrées dans les scènes Latin House et Tech House, JAGGO est devenu une présence incontournable dans le paysage de la musique électronique du Venezuela. Ses sets se caractérisent par un mélange sophistiqué de House, Latin House, Tech House et Reggaetón—une combinaison qui a captivé le public des clubs intimes aux événements géants dans les stades.",
-      bio2: "Reconnu pour sa maîtrise technique et son goût musical impeccable, JAGGO crée des voyages sonores immersifs qui transcendent les frontières des genres. Ses performances dans des lieux prestigieux à travers Caracas l'ont établi comme une figure essentielle de la culture club de la région.",
+      bio1: "Jaggo est un DJ vénézuélien dont le style repose sur l'énergie, la polyvalence et la connexion avec le public. Sa passion est née à l'adolescence, influencée par l'essor de l'electro house, du reggaeton et du hip-hop vénézuélien. Il s'est formé à Pitch Control sous la direction de Milton Hernández et a fait ses premiers pas professionnels avec Leonel Rojas au LeClub, l'une des boîtes de nuit les plus emblématiques de Caracas.",
+      bio2: "Depuis, il s'est produit lors d'événements mondains prestigieux. Son style mêle house, afro house, tech house et reggaeton, avec une forte influence des classiques latins et de la musique électronique qui ont marqué son enfance. Jaggo ne se contente pas de mixer : il crée des expériences intenses et émotionnelles où le dancefloor s'enflamme et le public vibre. Chacun de ses sets est une invitation à vivre pleinement.",
       yearsActive: 'Années d\'Activité',
       showsPerformed: 'Concerts Réalisés',
       averageCrowd: 'Public Moyen',
@@ -248,8 +248,8 @@ export const translations = {
     },
     about: {
       title: 'Chi è',
-      bio1: 'Con radici profondamente radicate nelle scene Latin House e Tech House, JAGGO è diventato una presenza dominante nel panorama della musica elettronica del Venezuela. I suoi set sono caratterizzati da un sofisticato mix di House, Latin House, Tech House e Reggaetón—una combinazione che ha conquistato il pubblico dai club intimi ai grandi eventi negli stadi.',
-      bio2: 'Riconosciuto per la sua abilità tecnica e il suo gusto musicale impeccabile, JAGGO crea viaggi sonori immersivi che trascendono i confini dei generi. Le sue esibizioni in prestigiosi locali di Caracas lo hanno affermato come una figura essenziale nella cultura del club della regione.',
+      bio1: 'Jaggo è un DJ venezuelano il cui stile si basa su energia, versatilità e capacità di entrare in sintonia con il pubblico. La sua passione è nata durante l adolescenza, influenzata dal boom dell electro house, del reggaeton e dell hip hop venezuelano. Si è formato presso Pitch Control sotto la guida di Milton Hernández e ha mosso i primi passi professionali con Leonel Rojas al LeClub, uno dei locali notturni più iconici di Caracas.',
+      bio2: 'Da allora, si è esibito in eventi mondani di alto profilo. Il suo stile fonde house, afro house, tech house e reggaeton, con una forte influenza dei classici latini e della musica elettronica che hanno plasmato la sua infanzia. Jaggo non si limita a mixare musica: crea esperienze energiche ed emozionanti in cui la pista da ballo si infiamma e la folla vibra. Ogni suo set è un invito a vivere la vita al massimo.',
       yearsActive: 'Anni di Attività',
       showsPerformed: 'Spettacoli Realizzati',
       averageCrowd: 'Pubblico Medio',
