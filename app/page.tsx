@@ -407,7 +407,9 @@ export default function Home() {
                 {equipment.map((item, idx) => (
                   <div key={idx} className="p-6 bg-gradient-to-r from-red-900/20 to-transparent border border-red-900/30 rounded-sm hover:border-red-600/60 transition-colors">
                     <p className="font-semibold text-white text-lg">{item.name}</p>
-                    <p className="text-sm text-gray-500 uppercase tracking-wider">{t.rider.equipmentTypes[item.type]}</p>
+                    <p className="text-sm text-gray-500 uppercase tracking-wider">
+                      {item.name.includes('XDJ-RX3') ? 'Alternativa' : t.rider.equipmentTypes[item.type]}
+                    </p>
                   </div>
                 ))}
               </div>
