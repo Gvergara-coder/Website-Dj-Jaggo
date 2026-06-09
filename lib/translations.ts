@@ -47,7 +47,7 @@ export const translations = {
     rider: {
       title: 'Rider Técnico',
       requiredEquipment: 'Equipo Requerido',
-      equipmentTypes: { turntable: 'Reproductor', mixer: 'Mezclador' },
+      equipmentTypes: { turntable: 'Preferible', mixer: 'Mezclador' },
       setupDetails: 'Detalles de Montaje',
       setupItems: [
         'Configuración de doble plato con mezclador profesional',

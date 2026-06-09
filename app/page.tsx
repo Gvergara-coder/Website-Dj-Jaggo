@@ -63,8 +63,8 @@ export default function Home() {
   ]
 
   const equipment: { name: string; type: EquipKey }[] = [
-    { name: '2x Pioneer CDJ-3000', type: 'turntable' },
-    { name: 'Pioneer DJM-DJM-V9 o V10', type: 'mixer' },
+    { name: '2x Pioneer CDJ-3000 + DJM DJMV10', type: 'turntable' },
+    { name: 'Pioneer XDJ-RX3', type: 'turntable' },
   ]
 
   const mediaGalleryImages = [
@@ -426,8 +426,8 @@ export default function Home() {
             {/* Rider Image */}
             <div className="relative h-96 md:h-[500px] overflow-hidden bg-gradient-to-br from-red-900/10 to-transparent border border-red-900/30">
               <Image
-                src="/rider-setup.jpg"
-                alt="Equipment Setup"
+                src="/rider.jpg"
+                alt="Equipo Rider"
                 fill
                 className="object-contain object-center transition-transform duration-500 hover:scale-105"
               />
