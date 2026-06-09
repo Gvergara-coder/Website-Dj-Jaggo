@@ -63,7 +63,7 @@ export default function Home() {
   ]
 
   const equipment: { name: string; type: EquipKey }[] = [
-    { name: '2x Pioneer CDJ-3000 + DJM DJMV10', type: 'turntable' },
+    { name: '2x Pioneer CDJ-3000 + DJMV10', type: 'turntable' },
     { name: 'Pioneer XDJ-RX3', type: 'turntable' },
   ]
 
